@@ -12,6 +12,7 @@ public class CadastroEntregasService {
 
     public Response response;
     String baseUrl = "http://localhost:8080";
+    String idDelivery;
     final EntregaModel entregaModel = new EntregaModel();
     public final Gson gson = new GsonBuilder().excludeFieldsWithoutExposeAnnotation().create();
 
@@ -34,6 +35,21 @@ public class CadastroEntregasService {
                 .body(bodyToSend)
                 .when()
                 .post(url)
+                .then()
+                .extract()
+                .response();
+    }
+
+    public void retrieveIdDelivery() {
+        idDelivery = String.valueOf(gson.fromJson(response.jsonPath().prettify(), EntregaModel.class).getNumeroEntrega());
+    }
+
+    public void deleteDelivery(String endPoint) {
+        String url = String.format("%s%s/%s", baseUrl, endPoint, idDelivery);
+        response = given()
+                .accept(ContentType.JSON)
+                .when()
+                .delete(url)
                 .then()
                 .extract()
                 .response();
