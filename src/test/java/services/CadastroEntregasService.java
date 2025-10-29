@@ -25,10 +25,7 @@ import static io.restassured.RestAssured.given;
 public class CadastroEntregasService {
 
     public Response response;
-    //    String baseUrl = "http://localhost:8080";
-    String baseUrl = "https://api-entregas-e08b1747db7d.herokuapp.com";
-
-
+        String baseUrl = "http://localhost:8080";
     String idDelivery;
     final EntregaModel entregaModel = new EntregaModel();
     public final Gson gson = new GsonBuilder().excludeFieldsWithoutExposeAnnotation().create();
