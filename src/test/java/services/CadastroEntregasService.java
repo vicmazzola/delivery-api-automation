@@ -25,7 +25,10 @@ import static io.restassured.RestAssured.given;
 public class CadastroEntregasService {
 
     public Response response;
-    String baseUrl = "http://localhost:8080";
+    //    String baseUrl = "http://localhost:8080";
+    String baseUrl = "https://api-entregas-e08b1747db7d.herokuapp.com";
+
+
     String idDelivery;
     final EntregaModel entregaModel = new EntregaModel();
     public final Gson gson = new GsonBuilder().excludeFieldsWithoutExposeAnnotation().create();
@@ -81,13 +84,13 @@ public class CadastroEntregasService {
 
     public void setContract(String contract) throws IOException {
         switch (contract) {
-            case "Cadastro bem-sucedido de entrega" -> jsonSchema = loadJsonFromFile(schemasPath + "cadastro-bem-sucedido-de-entrega.json");
+            case "Cadastro bem-sucedido de entrega" ->
+                    jsonSchema = loadJsonFromFile(schemasPath + "cadastro-bem-sucedido-de-entrega.json");
             default -> throw new IllegalStateException("Unexpected contract" + contract);
         }
     }
 
-    public Set<ValidationMessage> validateResponseAgainstSchema() throws IOException
-    {
+    public Set<ValidationMessage> validateResponseAgainstSchema() throws IOException {
         JSONObject jsonResponse = new JSONObject(response.getBody().asString());
         JsonSchemaFactory schemaFactory = JsonSchemaFactory.getInstance(SpecVersion.VersionFlag.V4);
         JsonSchema schema = schemaFactory.getSchema(jsonSchema.toString());
