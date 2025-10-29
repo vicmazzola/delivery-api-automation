@@ -1,8 +1,10 @@
 # language: pt
+@regressivo
 Funcionalidade: Cadastro de nova entrega
   Como usuário da API
   Quero cadastrar uma nova entrega
   Para que o registro seja salvo corretamente no sistema
+
   Cenário: Cadastro bem-sucedido de entrega
     Dado que eu tenha os seguintes dados da entrega:
       | campo          | valor        |

@@ -1,4 +1,5 @@
 # language: pt
+@regressivo
 Funcionalidade: Validar o contrato ao realizar um cadastro bem-sucedido de entrega
   Como usuário da API
   Quero cadastrar uma nova entrega bem-sucedido
