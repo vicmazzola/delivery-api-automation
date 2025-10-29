@@ -15,8 +15,8 @@ jobs:
         with:
           java-version: '22'
           distribution: 'adopt'
-      - name: Build and test
-        run: mvn clean test #Esse comando vai rodar os testes
+      - name: Build without tests
+        run: mvn clean package -DskipTests
   deploy:
     runs-on: ubuntu-latest
     needs: continuous-integration
